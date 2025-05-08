@@ -13,7 +13,7 @@
       v-model:selected-keys="selectedKeys"
       v-model:open-keys="openKeys"
       
-      
+      @click="handleMenuClick"
       :default-open-keys="['sub1', 'sub2', 'sub3']"
     >
       <a-menu-item key="1">
@@ -72,6 +72,12 @@ import { ref } from "vue";
 
 const selectedKeys = ref(["1"]); 
 const openKeys = ref(["sub1", "sub2", "sub3"]);
+const emit = defineEmits(['navigate'])
+
+const handleMenuClick = ({ key }) => {
+  emit('navigate', key)
+}
+
 </script>
 
 <style>
